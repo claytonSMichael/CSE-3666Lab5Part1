@@ -12,7 +12,7 @@ def print_register (s, num, i):
 
 def print_register_dump (num, i):
     ui = i & 0xFFFFFFFF 
-    print("${0:02d}=0x{1:08X}({2:11d})    ".format(num, ui, i), end='')
+    print("${0:02d}=0x{1:08X}({2:11d})".format(num, ui, i), end='')
 
 def print_int(s, i):
     print("{0}=0x{1:08X} {2:d}".format(s, i & 0xFFFFFFFF, i), end='')
@@ -117,7 +117,7 @@ def load_file(MEM, filename):
                 MEM.set_address(address);
                 MEM.set_data(value);  # may use int_to_signed_32(value) 
                 MEM.run();
-                # print ("Mem[%s]=%s"% ( hex(address),hex(value)))
+                print ("Mem[%s]=%s"% ( hex(address),hex(value)))
                 #need to set the value in memory module
     MEM.set_memwrite(0);
     return

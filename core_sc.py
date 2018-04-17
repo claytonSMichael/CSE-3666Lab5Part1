@@ -95,9 +95,28 @@ class Core_SC:
         """
         Extract the following signals from instruction.
             opcode, rs, rt, rd, funct, immediate
-        """
-        sig.opcode = (instruction >> 26) & 0x3F
+        
+	"""sig.opcode = (instruction >> 26) & 0x3F
+	hex_4 = 0x457
+	hex_5 = 0x3F
+	hex_16 = 0xFFFF
 
+	if not sig.opcode:
+		sig.rs = ((instruction << 6) >> 27) & hex_4
+		sig.rt = ((instruction << 11) >> 27) & hex_4
+		sig.rd = ((instruction << 16) >> 27) & hex_4
+		sig.funct = ((instruction << 26) >> 26) & hex_5
+		
+	elif not sig.opcode & 0x02:
+		sig.rs = ((instruction << 6) >> 27) & hex_4
+		sig.rt = ((instruction << 11) >> 27) & hex_4
+		sig.immediate = ((instruction << 16) >> hex_16
+	else:
+		pass	
+
+
+
+			
     def main_control(self, opcode, sig):
         """
         Check the type of input instruction
@@ -106,14 +125,26 @@ class Core_SC:
         sig.RegDst = sig.Jump = sig.Branch = sig.MemRead = sig.MemtoReg = sig.ALUOp = sig.MemWrite = sig.ALUSrc = sig.RegWrite = 0
 
         #determine control signals
-        if opcode == 0:             # R-Type 000000
-            sig.RegWrite = 1
-            sig.RegDst = 1
-            sig.ALUOp = 2
-        #else:
-        #    raise ValueError("Unknown opcode 0x%02X" % opcode)
-        return 
-
+        if not opcode:             
+		sig.RegWrite = 1
+		sig.RegDst = 1
+		sig.ALUOp = 2
+	
+	elif not (opcode & 0x23):
+		sig.MemRead = 1
+		sig.MemtoReg = 1
+		sig.ALUSrc = 1
+		sig.RegWrite 1
+	elif not (opcode & 0x2B):
+		sig.ALUSrc = 1
+		sig.MeMWrite = 1
+	elif not (opcode & 0x4):
+		sig.Jump = 1
+	else:
+		sig.RegWrite = 1
+		sig.ALUSrc = 1
+		sig.Branch = 1
+	
     def ALU_control(self, alu_op, funct):  
         """
         Get alu_control from func field of instruction
