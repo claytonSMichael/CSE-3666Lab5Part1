@@ -92,30 +92,23 @@ class Core_SC:
         return i_cycles
             
     def signals_from_instruction (self, instruction, sig):
-        """
-        Extract the following signals from instruction.
-            opcode, rs, rt, rd, funct, immediate
-        
-	"""sig.opcode = (instruction >> 26) & 0x3F
-	hex_4 = 0x457
-	hex_5 = 0x3F
-	hex_16 = 0xFFFF
-
-	if not sig.opcode:
-		sig.rs = ((instruction << 6) >> 27) & hex_4
-		sig.rt = ((instruction << 11) >> 27) & hex_4
-		sig.rd = ((instruction << 16) >> 27) & hex_4
-		sig.funct = ((instruction << 26) >> 26) & hex_5
 		
-	elif not sig.opcode & 0x02:
-		sig.rs = ((instruction << 6) >> 27) & hex_4
-		sig.rt = ((instruction << 11) >> 27) & hex_4
-		sig.immediate = ((instruction << 16) >> hex_16
-	else:
-		pass	
+		sig.opcode = (instruction >> 26) & 0x3F
+		hex_4 = 0x457
+		hex_5 = 0x3F
+		hex_16 = 0xFFFF
 
-
-
+		if not sig.opcode:
+			sig.rs = ((instruction << 6) >> 27) & hex_4
+			sig.rt = ((instruction << 11) >> 27) & hex_4
+			sig.rd = ((instruction << 16) >> 27) & hex_4
+			sig.funct = ((instruction << 26) >> 26) & hex_5
+		elif not sig.opcode & 0x02:
+			sig.rs = ((instruction << 6) >> 27) & hex_4
+			sig.rt = ((instruction << 11) >> 27) & hex_4	
+			sig.immediate = ((instruction << 16) >> hex_16
+		else:
+			pass
 			
     def main_control(self, opcode, sig):
         """
@@ -126,24 +119,25 @@ class Core_SC:
 
         #determine control signals
         if not opcode:             
-		sig.RegWrite = 1
-		sig.RegDst = 1
-		sig.ALUOp = 2
+			sig.RegWrite = 1
+			sig.RegDst = 1
+			sig.ALUOp = 2
 	
-	elif not (opcode & 0x23):
-		sig.MemRead = 1
-		sig.MemtoReg = 1
-		sig.ALUSrc = 1
-		sig.RegWrite 1
-	elif not (opcode & 0x2B):
-		sig.ALUSrc = 1
-		sig.MeMWrite = 1
-	elif not (opcode & 0x4):
-		sig.Jump = 1
-	else:
-		sig.RegWrite = 1
-		sig.ALUSrc = 1
-		sig.Branch = 1
+		elif not (opcode & 0x23):
+			sig.MemRead = 1
+			sig.MemtoReg = 1
+			sig.ALUSrc = 1
+			sig.RegWrite 1
+	
+		elif not (opcode & 0x2B):
+			sig.ALUSrc = 1
+			sig.MeMWrite = 1
+		elif not (opcode & 0x4):
+			sig.Jump = 1
+		else:
+			sig.RegWrite = 1
+			sig.ALUSrc = 1
+			sig.Branch = 1
 	
     def ALU_control(self, alu_op, funct):  
         """
@@ -155,9 +149,21 @@ class Core_SC:
         alu_control_out = 0
         # One example is given, continue to finish other cases.
         if alu_op == 0:             # 00  
-            alu_control_out = 2     # 0010
-        # else:
-        #    raise ValueError("Unknown opcode code 0x%02X" % alu_op)
+			alu_control_out = 2     # 0010
+		elif alu_op == 1:
+			alu_control_out = 6
+		else alu_op == 2:
+			if funct == 32:
+				alu_control_out = 2
+			elif funct == 34:
+				alu_control_out = 6
+			elif funct == 36:
+				alu_control_out = 0
+			elif funct == 37:
+				alu_control_out = 1
+			else:
+				alu_control_out = 7	        
+
         return alu_control_out
 
     def sign_extend(self, immd):
@@ -167,13 +173,21 @@ class Core_SC:
         Extract the lower 16 bits. 
         If bit 15 of immd is 1, compute the correct negative value (immd - 0x10000).
         """
-        immd = immd & 0xFFFF
+        if immd < 0:
+			immd & 0xFFFF
+		else:
+			immd & 0x0000
+
         return immd
 
     def calculate_branch_address(self, pc_4, extended):
-        addr = 0
+		addr = 0
+		addr += (extended << 2) + pc_4
         return addr
 
     def calculate_jump_address(self, pc_4, instruction):
         addr = 0
+		addr += instruction << 2
+		addr += ((pc_4 >> 28) << 28)  
         return addr
+
