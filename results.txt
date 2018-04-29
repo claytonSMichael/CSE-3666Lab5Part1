@@ -68,6 +68,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003204 12804
 Jump_address=0x80400200 -2143288832
 Write_register=0b10000 16
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003004 12292
 ==========================================
 Cycle 2
 PC=0x00003004 12292
@@ -92,6 +102,16 @@ ALU_operation=0b0010 2
 Branch_address=0xFFFE5088 -110456
 Jump_address=0x00022080 139392
 Write_register=0b10001 17
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003008 12296
 ==========================================
 Cycle 3
 PC=0x00003008 12296
@@ -116,6 +136,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003010 12304
 Jump_address=0x80200004 -2145386492
 Write_register=0b00000 0
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x0000300C 12300
 ==========================================
 Cycle 4
 PC=0x0000300C 12300
@@ -140,6 +170,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003014 12308
 Jump_address=0xB8200000 -1205862400
 Write_register=0b00000 0
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003010 12304
 ==========================================
 Cycle 5
 PC=0x00003010 12304
@@ -164,6 +204,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003048 12360
 Jump_address=0x80480034 -2142765004
 Write_register=0b10010 18
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003014 12308
 ==========================================
 Cycle 6
 PC=0x00003014 12308
@@ -188,6 +238,16 @@ ALU_operation=0b0010 2
 Branch_address=0x0000301C 12316
 Jump_address=0x88C40004 -2000420860
 Write_register=0b10001 17
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003018 12312
 ==========================================
 Cycle 7
 PC=0x00003018 12312
@@ -212,6 +272,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003020 12320
 Jump_address=0x48C80040 1221066816
 Write_register=0b10001 17
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x0000301C 12316
 ==========================================
 Cycle 8
 PC=0x0000301C 12316
@@ -236,6 +306,16 @@ ALU_operation=0b0010 2
 Branch_address=0x00003024 12324
 Jump_address=0x38100000 940572672
 Write_register=0b10001 17
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003020 12320
 ==========================================
 Cycle 9
 PC=0x00003020 12320
@@ -260,6 +340,16 @@ ALU_operation=0b0010 2
 Branch_address=0x0000D0A4 53412
 Jump_address=0x0044A080 4497536
 Write_register=0b00101 5
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003024 12324
 ==========================================
 Cycle 10
 PC=0x00003024 12324
@@ -284,6 +374,16 @@ ALU_operation=0b0010 2
 Branch_address=0x0000D0A8 53416
 Jump_address=0x20003034 536883252
 Write_register=0b10001 17
+RF_read_data_1=0x00000000 0
+RF_read_data_2=0x00000000 0
+ALU_input_2=0x00000000 0
+ALU_result=0x00000000 0
+Zero=0
+MEM_read_data=0x00000000 0
+Write_data=0x00000000 0
+PCSrc=0
+PC_branch=0x00000000 0
+PC_new=0x00003028 12328
 $00=0x00000000(          0)$01=0x00000000(          0)$02=0x00000000(          0)$03=0x00000000(          0)
 $04=0x00000000(          0)$05=0x00000000(          0)$06=0x00000000(          0)$07=0x00000000(          0)
 $08=0x00000000(          0)$09=0x00000000(          0)$10=0x00000000(          0)$11=0x00000000(          0)
